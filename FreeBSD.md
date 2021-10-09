@@ -13,8 +13,8 @@ pw groupmod wheel -m yzd
 修改/etc/ssh/sshd_config
 
 ```
-sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
-sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+sed -i ‘s/PermitRootLogin no/PermitRootLogin yes/g’ /etc/ssh/sshd_config
+sed -i ‘s/PasswordAuthentication no/PasswordAuthentication yes/g’ /etc/ssh/sshd_config
 ```
 
 重载sshd服务，即可生效
@@ -58,27 +58,42 @@ FreeBSD: {
 
  ```
 pkg update
-pkg install -y bash bash-completion
-chsh -s /usr/local/bin/bash
 pkg search vim
 pkg install vim-8.2.3458
  ```
 
-### 源码安装vsftpd和xray
+### 安装bash
+
+```
+pkg install -y bash bash-completion
+chsh -s /usr/local/bin/bash
+```
+
+
+### 安装vsftpd
 
 ```
 portsnap fetch extract
 find /usr/ports -name '*ftp*'
 cd /usr/ports/ftp/vsftpd
 make install clean
-
-cd /usr/ports/security/xray-core
-make install clean
-
-xray run -config ./config2.json
 ```
 
+```
+vim /etc/rc.conf
+```
 
+最后一行增加
 
+```
+sftpd_enable="YES"
+```
 
+### 安装xray
+
+```
+cd /usr/ports/security/xray-core
+make install clean
+xray run -config ./config2.json
+```
 
