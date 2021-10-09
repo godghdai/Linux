@@ -92,6 +92,10 @@ sftpd_enable="YES"
 ### 安装xray
 
 ```
+cp /usr/home/ftp/go1.17.2.src.tar.gz /usr/ports/distfiles/ 
+```
+
+```
 cd /usr/ports/security/xray-core
 make install clean
 xray run -config ./config2.json
