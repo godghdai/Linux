@@ -89,4 +89,5 @@ Vim的操作符命令
 - `y$` 复制从光标到行尾的内容
 - `nyy` 复制n行
 
-
+- https://cloud.tencent.com/developer/article/1489919
+- https://juejin.cn/post/6844903709156065288
